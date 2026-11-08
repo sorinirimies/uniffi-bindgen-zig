@@ -1,0 +1,22 @@
+[package]
+name = "uniffi-bindgen-zig-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+uniffi-bindgen-zig = { path = "../crates/uniffi-bindgen-zig" }
+
+# Not part of the main workspace (needs nightly).
+[workspace]
+
+[[bin]]
+name = "generate_udl"
+path = "fuzz_targets/generate_udl.rs"
+test = false
+doc = false
+bench = false
